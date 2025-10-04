@@ -221,19 +221,21 @@ progetto/
 
 ## 📅 Piano Operativo (8 ore totali)
 
-### FASE 1: Setup Ambiente (30 min) ⏳
-- [ ] 1.1 Creare struttura cartelle
-- [ ] 1.2 Setup Docker Compose (MySQL + MongoDB)
-- [ ] 1.3 Inizializzare progetto Node.js (npm init)
-- [ ] 1.4 Installare dipendenze base
-- [ ] 1.5 Configurare connessioni database
+### FASE 1: Setup Ambiente (30 min) ✅ COMPLETATA
+- [x] 1.1 Creare struttura cartelle
+- [x] 1.2 Setup Docker Compose (MySQL + MongoDB)
+- [x] 1.3 Inizializzare progetto Node.js (npm init)
+- [x] 1.4 Installare dipendenze base
+- [x] 1.5 Configurare file .env e .gitignore
 
-### FASE 2: Database (1h)
-- [ ] 2.1 Aggiornare schema SQL (Users + role)
-- [ ] 2.2 Importare schema MySQL
-- [ ] 2.3 Creare seed data SQL (30 users, 30 products, 15 orders)
-- [ ] 2.4 Definire schema MongoDB (Mongoose)
-- [ ] 2.5 Creare seed data MongoDB (30 reviews)
+### FASE 2: Database (2h) ✅ COMPLETATA
+- [x] 2.1 Aggiornare schema SQL (Users + role)
+- [x] 2.2 Importare schema MySQL
+- [x] 2.3 Creare seed data SQL (30 users, 30 products, 15 orders)
+- [x] 2.4 Definire schema MongoDB (Mongoose)
+- [x] 2.5 Creare seed data MongoDB (29 reviews, 18 comments, 100 logs)
+- [x] 2.6 Risolvere problema autenticazione MongoDB
+- [x] 2.7 Verificare dati in entrambi i database
 
 ### FASE 3: Backend Base (2h)
 - [ ] 3.1 Setup Express + middlewares base
@@ -291,7 +293,7 @@ progetto/
 ## 🚀 Deliverable Finali
 
 ### Codice
-- ✅ Backend Node.js completo e commentato
+- ⏳ Backend Node.js completo e commentato (in progress)
 - ✅ Schema SQL aggiornato
 - ✅ Schema MongoDB (Mongoose)
 - ✅ Seed data funzionanti
@@ -302,14 +304,15 @@ progetto/
 - ✅ .gitignore appropriato
 
 ### Documentazione
-- ✅ README.md (overview + quick start)
-- ✅ SETUP.md (guida installazione dettagliata)
-- ✅ API.md (documentazione endpoint)
-- ✅ MONGODB-SCHEMA.md (schema collections)
-- ✅ Diagramma ER aggiornato
+- ⏳ README.md (overview + quick start) - da creare
+- ✅ GUIDA-DOCKER.md (guida Docker completa)
+- ✅ FASE-2-COMPLETATA.md (riepilogo database)
+- ⏳ API.md (documentazione endpoint) - da creare
+- ⏳ MONGODB-SCHEMA.md (schema collections) - da creare
+- ✅ Diagramma ER aggiornato (drawdb.app)
 
 ### Testing
-- ✅ Collection Postman completa
+- ⏳ Collection Postman completa - da creare
 - ✅ Esempi request/response
 
 ---
@@ -362,17 +365,17 @@ docker-compose down -v
 - ✅ Struttura modulare
 
 ### Security
-- ✅ Password hashate (bcrypt)
-- ✅ JWT con expiration
-- ✅ Validazione ruoli su endpoint protetti
-- ✅ Sanitizzazione input
+- ⏳ Password hashate (bcrypt) - da implementare in API
+- ⏳ JWT con expiration - da implementare
+- ⏳ Validazione ruoli su endpoint protetti - da implementare
+- ⏳ Sanitizzazione input - da implementare
 - ✅ .env non committato
 
 ### Performance
 - ✅ Indici su colonne ricercate/joinned
-- ✅ Connection pooling database
+- ⏳ Connection pooling database - da implementare
 - ✅ Text index MongoDB per full-text search
-- ✅ Paginazione su liste lunghe
+- ⏳ Paginazione su liste lunghe - da implementare
 
 ---
 
@@ -391,13 +394,16 @@ Questo progetto ti permetterà di imparare:
 
 ## 📍 Stato Avanzamento
 
-**Ultima modifica**: 2025-10-03
-**Fase corrente**: FASE 1 - Setup Ambiente
-**Prossimo step**: Aggiornamento schema SQL con Users + role
+**Ultima modifica**: 2025-10-04
+**Fase corrente**: FASE 3 - Backend Base (da iniziare)
+**Fasi completate**: FASE 1 ✅ | FASE 2 ✅
+**Prossimo step**: Setup Express + middlewares base + configurazione database connections
 
 ---
 
 **Note per ripresa lavoro:**
-- Schema SQL da aggiornare: Customers → Users + campo role
-- Diagramma ER da aggiornare su drawdb.app
-- Tutte le FK che puntavano a Customers vanno aggiornate a Users
+- ✅ FASE 1 e FASE 2 completate
+- ✅ Database MySQL e MongoDB popolati e funzionanti
+- ✅ Docker Compose configurato e testato
+- ⏳ Prossimo: FASE 3 - Creare backend Express con connessioni ai database
+- 📄 Vedi [docs/FASE-2-COMPLETATA.md](docs/FASE-2-COMPLETATA.md) per dettagli database
