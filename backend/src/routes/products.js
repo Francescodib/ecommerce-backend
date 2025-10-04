@@ -13,6 +13,10 @@ const {
   getTopSellingProducts,
   getProductsByCategory
 } = require('../controllers/productController');
+const {
+  getProductReviews,
+  createReview
+} = require('../controllers/reviewController');
 const { authenticateToken, checkRole } = require('../middlewares/auth');
 
 /**
@@ -44,6 +48,20 @@ router.get('/category/:categoryId', getProductsByCategory);
  * @access  Public
  */
 router.get('/:id', getProductById);
+
+/**
+ * @route   GET /api/products/:productId/reviews
+ * @desc    Get recensioni prodotto
+ * @access  Public
+ */
+router.get('/:productId/reviews', getProductReviews);
+
+/**
+ * @route   POST /api/products/:productId/reviews
+ * @desc    Crea recensione per prodotto
+ * @access  Private
+ */
+router.post('/:productId/reviews', authenticateToken, createReview);
 
 /**
  * @route   POST /api/products

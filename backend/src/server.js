@@ -17,6 +17,7 @@ const authRoutes = require('./routes/auth');
 const categoryRoutes = require('./routes/categories');
 const productRoutes = require('./routes/products');
 const userRoutes = require('./routes/users');
+const reviewRoutes = require('./routes/reviews');
 
 // Inizializza Express
 const app = express();
@@ -80,6 +81,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/reviews', reviewRoutes);
 
 // ====================
 // ERROR HANDLING
