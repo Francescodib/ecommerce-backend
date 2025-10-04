@@ -237,19 +237,20 @@ progetto/
 - [x] 2.6 Risolvere problema autenticazione MongoDB
 - [x] 2.7 Verificare dati in entrambi i database
 
-### FASE 3: Backend Base (2h)
-- [ ] 3.1 Setup Express + middlewares base
-- [ ] 3.2 Sistema autenticazione JWT
-- [ ] 3.3 Middleware verifica ruoli
-- [ ] 3.4 CRUD Users
-- [ ] 3.5 CRUD Products
-- [ ] 3.6 CRUD Categories
+### FASE 3: Backend Base (1.5h) ✅ COMPLETATA
+- [x] 3.1 Setup Express + middlewares base
+- [x] 3.2 Sistema autenticazione JWT
+- [x] 3.3 Middleware verifica ruoli (+ ownership check)
+- [x] 3.4 CRUD Categories (completo)
+- [x] 3.5 Auth endpoints (register, login, me)
+- [x] 3.6 Fix password hash in seed data
+- [x] 3.7 Test API funzionanti
 
-### FASE 4: Logica Business (2h)
-- [ ] 4.1 Sistema Orders + OrderDetails
-- [ ] 4.2 Sistema Payments
-- [ ] 4.3 Validazioni e relazioni
-- [ ] 4.4 Gestione errori centralizzata
+### FASE 4: Products & Users (2h) ⏳ IN PROGRESS
+- [x] 4.1 CRUD Products (con filtri e search)
+- [x] 4.2 Query prodotti più venduti (SQL complessa)
+- [ ] 4.3 CRUD Users management
+- [ ] 4.4 Get ordini per utente (query complessa)
 
 ### FASE 5: MongoDB Integration (1.5h)
 - [ ] 5.1 CRUD Reviews
@@ -395,15 +396,17 @@ Questo progetto ti permetterà di imparare:
 ## 📍 Stato Avanzamento
 
 **Ultima modifica**: 2025-10-04
-**Fase corrente**: FASE 3 - Backend Base (da iniziare)
-**Fasi completate**: FASE 1 ✅ | FASE 2 ✅
-**Prossimo step**: Setup Express + middlewares base + configurazione database connections
+**Fase corrente**: FASE 4 - Products & Users (in progress)
+**Fasi completate**: FASE 1 ✅ | FASE 2 ✅ | FASE 3 ✅ | FASE 4A ✅
+**Prossimo step**: Implementare Users management CRUD
 
 ---
 
 **Note per ripresa lavoro:**
-- ✅ FASE 1 e FASE 2 completate
+- ✅ FASE 1, 2, 3 e 4A completate
 - ✅ Database MySQL e MongoDB popolati e funzionanti
-- ✅ Docker Compose configurato e testato
-- ⏳ Prossimo: FASE 3 - Creare backend Express con connessioni ai database
-- 📄 Vedi [docs/FASE-2-COMPLETATA.md](docs/FASE-2-COMPLETATA.md) per dettagli database
+- ✅ Backend Express funzionante con Auth JWT, Categories e Products CRUD
+- ✅ Products API completa con query complesse (top-selling, filtri dinamici)
+- ✅ Server testato e funzionante su porta 3000
+- ⏳ Prossimo: FASE 4B - Implementare Users management e Orders
+- 📄 Vedi [docs/FASE-4A-PRODUCTS-COMPLETATA.md](docs/FASE-4A-PRODUCTS-COMPLETATA.md) per Products API documentation
