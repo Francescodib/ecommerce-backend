@@ -16,7 +16,7 @@ const { errorHandler, notFound } = require('./middlewares/errorHandler');
 const authRoutes = require('./routes/auth');
 const categoryRoutes = require('./routes/categories');
 const productRoutes = require('./routes/products');
-// const userRoutes = require('./routes/users');
+const userRoutes = require('./routes/users');
 
 // Inizializza Express
 const app = express();
@@ -79,7 +79,7 @@ app.get('/api', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
-// app.use('/api/users', userRoutes);
+app.use('/api/users', userRoutes);
 
 // ====================
 // ERROR HANDLING

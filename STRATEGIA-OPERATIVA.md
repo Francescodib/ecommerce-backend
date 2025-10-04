@@ -246,11 +246,11 @@ progetto/
 - [x] 3.6 Fix password hash in seed data
 - [x] 3.7 Test API funzionanti
 
-### FASE 4: Products & Users (2h) ⏳ IN PROGRESS
+### FASE 4: Products & Users (2h) ✅ COMPLETATA
 - [x] 4.1 CRUD Products (con filtri e search)
 - [x] 4.2 Query prodotti più venduti (SQL complessa)
-- [ ] 4.3 CRUD Users management
-- [ ] 4.4 Get ordini per utente (query complessa)
+- [x] 4.3 CRUD Users management
+- [x] 4.4 Get ordini per utente (query complessa)
 
 ### FASE 5: MongoDB Integration (1.5h)
 - [ ] 5.1 CRUD Reviews
@@ -396,17 +396,18 @@ Questo progetto ti permetterà di imparare:
 ## 📍 Stato Avanzamento
 
 **Ultima modifica**: 2025-10-04
-**Fase corrente**: FASE 4 - Products & Users (in progress)
-**Fasi completate**: FASE 1 ✅ | FASE 2 ✅ | FASE 3 ✅ | FASE 4A ✅
-**Prossimo step**: Implementare Users management CRUD
+**Fase corrente**: FASE 5 - MongoDB Integration (da iniziare)
+**Fasi completate**: FASE 1 ✅ | FASE 2 ✅ | FASE 3 ✅ | FASE 4 ✅
+**Prossimo step**: Implementare Reviews CRUD con MongoDB
 
 ---
 
 **Note per ripresa lavoro:**
-- ✅ FASE 1, 2, 3 e 4A completate
+- ✅ FASE 1, 2, 3 e 4 completate
 - ✅ Database MySQL e MongoDB popolati e funzionanti
-- ✅ Backend Express funzionante con Auth JWT, Categories e Products CRUD
-- ✅ Products API completa con query complesse (top-selling, filtri dinamici)
+- ✅ Backend completo: Auth JWT, Categories, Products, Users CRUD
+- ✅ Query complesse SQL: top-selling products, user orders con JOIN multipli
+- ✅ Ownership check e role-based access control funzionanti
 - ✅ Server testato e funzionante su porta 3000
-- ⏳ Prossimo: FASE 4B - Implementare Users management e Orders
-- 📄 Vedi [docs/FASE-4A-PRODUCTS-COMPLETATA.md](docs/FASE-4A-PRODUCTS-COMPLETATA.md) per Products API documentation
+- ⏳ Prossimo: FASE 5 - MongoDB Reviews, Comments e Activity Logs
+- 📄 Documentazione: [FASE-3](docs/FASE-3-COMPLETATA.md) | [FASE-4A Products](docs/FASE-4A-PRODUCTS-COMPLETATA.md)
