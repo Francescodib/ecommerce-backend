@@ -196,7 +196,7 @@ Il progetto implementa:
 
 ---
 
-## 📝 Note per il Docente
+## 📝 Note
 
 ### Punti di Forza
 
@@ -228,13 +228,3 @@ Tutto è pronto per il testing immediato.
 
 ---
 
-## 📞 Contatti
-
-**Autore**: Francesco di Biase
-**Progetto**: ShopSphere E-commerce Backend
-**Corso**: Master Web Development
-**Anno**: 2025
-
----
-
-**Grazie per la valutazione! 🙏**

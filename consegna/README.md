@@ -601,8 +601,3 @@ I token JWT scadono dopo 24 ore. Effettua un nuovo login per ottenere un token v
 Master Web Development
 Ottobre 2025
 
----
-
-## Licenza
-
-Progetto didattico - Uso libero per scopi educativi
