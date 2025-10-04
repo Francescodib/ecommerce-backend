@@ -7,7 +7,7 @@ CREATE TABLE `users` (
 	`phone` VARCHAR(255),
 	`role` ENUM('customer', 'admin', 'seller') NOT NULL DEFAULT 'customer',
 	`created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`updated_at` DATETIME NOT NULL DEFAULT 'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+	`updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	PRIMARY KEY(`id`)
 );
 
@@ -30,12 +30,20 @@ CREATE TABLE `addresses` (
 );
 
 
+CREATE INDEX `idx_user_id`
+ON `addresses` (`user_id`);
+
+
 CREATE TABLE `categories` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
 	`name` VARCHAR(255) NOT NULL UNIQUE,
 	`description` TEXT(65535),
 	PRIMARY KEY(`id`)
 );
+
+
+CREATE INDEX `idx_name`
+ON `categories` (`name`);
 
 
 CREATE TABLE `products` (
@@ -151,7 +159,7 @@ CREATE INDEX `idx_code`
 ON `discounts` (`code`);
 CREATE INDEX `idx_is_active`
 ON `discounts` (`is_active`);
-CREATE TABLE `whishlists` (
+CREATE TABLE `wishlists` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
 	`user_id` INTEGER NOT NULL,
 	`product_id` INTEGER NOT NULL,
@@ -159,6 +167,13 @@ CREATE TABLE `whishlists` (
 	PRIMARY KEY(`id`)
 );
 
+
+CREATE UNIQUE INDEX `idx_user_product`
+ON `wishlists` (`user_id`, `product_id`);
+CREATE INDEX `idx_user_id`
+ON `wishlists` (`user_id`);
+CREATE INDEX `idx_product_id`
+ON `wishlists` (`product_id`);
 
 ALTER TABLE `addresses`
 ADD FOREIGN KEY(`user_id`) REFERENCES `users`(`id`)
@@ -193,9 +208,9 @@ ON UPDATE NO ACTION ON DELETE NO ACTION;
 ALTER TABLE `orders`
 ADD FOREIGN KEY(`discount_id`) REFERENCES `discounts`(`id`)
 ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE `whishlists`
+ALTER TABLE `wishlists`
 ADD FOREIGN KEY(`user_id`) REFERENCES `users`(`id`)
-ON UPDATE NO ACTION ON DELETE NO ACTION;
-ALTER TABLE `whishlists`
+ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `wishlists`
 ADD FOREIGN KEY(`product_id`) REFERENCES `products`(`id`)
-ON UPDATE NO ACTION ON DELETE NO ACTION;
+ON UPDATE CASCADE ON DELETE CASCADE;

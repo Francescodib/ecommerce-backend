@@ -1,0 +1,17 @@
+{
+  "name": "shopsphere-backend",
+  "version": "1.0.0",
+  "description": "Backend API per ShopSphere e-commerce",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "seed:sql": "node src/utils/seedSQL.js",
+    "seed:mongo": "node src/utils/seedMongo.js",
+    "seed:all": "npm run seed:sql && npm run seed:mongo"
+  },
+  "keywords": ["ecommerce", "api", "mysql", "mongodb"],
+  "author": "Francesco Di Biase",
+  "license": "ISC",
+  "type": "commonjs"
+}
