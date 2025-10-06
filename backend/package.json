@@ -6,12 +6,22 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "seed:sql": "node src/utils/seedSQL.js",
-    "seed:mongo": "node src/utils/seedMongo.js",
-    "seed:all": "npm run seed:sql && npm run seed:mongo"
+    "seed:mongodb": "node seed-mongodb.js"
   },
   "keywords": ["ecommerce", "api", "mysql", "mongodb"],
-  "author": "Francesco di Biase",
+  "author": "Francesco Di Biase",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.3",
+    "mysql2": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
 }

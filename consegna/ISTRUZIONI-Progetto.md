@@ -6,7 +6,7 @@
 
 ---
 
-## 📦 Contenuto della Consegna
+## Contenuto della Consegna
 
 Questa cartella contiene il progetto completo **ShopSphere**, un backend e-commerce con architettura ibrida MySQL + MongoDB.
 
@@ -39,7 +39,7 @@ consegna/
 
 ---
 
-## 🚀 Avvio Rapido
+## Avvio Rapido
 
 ### 1. Prerequisiti
 
@@ -63,7 +63,12 @@ docker compose up -d
 docker exec -i shopsphere-mysql mysql -u shopsphere_user -pshopsphere_pass shopsphere < database/sql/schema.sql
 docker exec -i shopsphere-mysql mysql -u shopsphere_user -pshopsphere_pass shopsphere < database/sql/seed.sql
 
-# 4. Avvia il server
+# 4. Popola MongoDB (opzionale ma consigliato)
+cd backend
+npm run seed:mongodb
+cd ..
+
+# 5. Avvia il server
 cd backend
 npm run dev
 ```
@@ -82,7 +87,7 @@ Il server è ora disponibile su **http://localhost:3000**
 
 ---
 
-## 📚 Documentazione
+## Documentazione
 
 - **README.md** - Guida completa con installazione, API, query complesse, testing
 - **API.md** - Documentazione dettagliata di tutti i 40+ endpoints
@@ -90,7 +95,7 @@ Il server è ora disponibile su **http://localhost:3000**
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Con cURL
 
@@ -120,7 +125,7 @@ User:   mario.rossi@email.com / password123
 
 ---
 
-## ✅ Checklist Valutazione
+## Checklist Valutazione
 
 Il progetto implementa:
 
@@ -159,7 +164,7 @@ Il progetto implementa:
 
 ---
 
-## 📊 Caratteristiche Principali
+## Caratteristiche Principali
 
 ### Architettura Ibrida
 - **MySQL**: Dati transazionali (users, products, orders, payments)
@@ -186,7 +191,7 @@ Il progetto implementa:
 
 ---
 
-## 🔧 Tecnologie Utilizzate
+## Tecnologie Utilizzate
 
 - **Backend**: Node.js 18, Express 4.x
 - **Database**: MySQL 8.0, MongoDB 7.0
@@ -196,7 +201,7 @@ Il progetto implementa:
 
 ---
 
-## 📝 Note
+## Note
 
 ### Punti di Forza
 
@@ -218,13 +223,92 @@ Il progetto implementa:
 
 ### Database Popolato
 
-Il database contiene già:
+Il database MySQL contiene già:
 - 30 utenti (2 admin, 28 customers)
 - 30 prodotti in 6 categorie
 - 15 ordini completi con pagamenti e spedizioni
-- Recensioni e commenti di esempio
+
+Il database MongoDB (se eseguito il seed) contiene:
+- 6 recensioni per 5 prodotti diversi
+- 3 commenti collegati alle recensioni
+- Dati collegati ai prodotti/utenti/ordini MySQL
 
 Tutto è pronto per il testing immediato.
+
+---
+
+## Seed MongoDB
+
+### Esecuzione
+
+```bash
+# Dalla cartella backend/
+npm run seed:mongodb
+```
+
+### Output atteso
+
+```
+Connessione a MongoDB...
+Connesso a MongoDB
+
+Pulizia collezioni esistenti...
+Collezioni pulite
+
+Inserimento recensioni...
+6 recensioni inserite
+
+Inserimento commenti...
+3 commenti inseriti
+
+Riepilogo:
+   - Recensioni: 6
+   - Commenti: 3
+   - Prodotti con recensioni: 5
+   - Media rating prodotto 1: 4.5
+
+Seed MongoDB completato con successo!
+```
+
+### Dati inseriti
+
+Lo script crea:
+
+**6 Recensioni**:
+- 2 recensioni per iPhone 15 Pro (prodotto 1) - rating 5 e 4
+- 1 recensione per Samsung Galaxy S24 (prodotto 2) - rating 4
+- 1 recensione per MacBook Air M2 (prodotto 3) - rating 5
+- 1 recensione per Sony WH-1000XM5 (prodotto 4) - rating 5
+- 1 recensione per Giacca in Pelle (prodotto 6) - rating 4
+
+**3 Commenti** collegati alle prime 3 recensioni
+
+**Collegamento con MySQL**:
+- `productId` riferisce prodotti esistenti (1, 2, 3, 4, 6)
+- `userId` riferisce utenti esistenti (3, 5, 8, 12, 15, 20)
+- `orderId` riferisce ordini esistenti (1, 2, 8, 12, 15)
+- `verifiedPurchase: true` quando collegato a ordine reale
+
+### Verifica via API
+
+```bash
+# Recensioni prodotto 1 con statistiche
+curl http://localhost:3000/api/products/1/reviews | python3 -m json.tool
+
+# Output include:
+# - count: 2
+# - stats: { avgRating: 4.5, rating5: 1, rating4: 1, ... }
+
+# Full-text search
+curl 'http://localhost:3000/api/reviews/search?q=fotocamera'
+```
+
+### Pulizia e Re-Seed
+
+```bash
+# Lo script pulisce automaticamente prima di inserire
+npm run seed:mongodb
+```
 
 ---
 

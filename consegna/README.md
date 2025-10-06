@@ -96,16 +96,27 @@ docker exec -i shopsphere-mysql mysql -u shopsphere_user -pshopsphere_pass shops
 docker exec -i shopsphere-mysql mysql -u shopsphere_user -pshopsphere_pass shopsphere < database/sql/seed.sql
 ```
 
-**5. Configura le variabili d'ambiente**
+**5. Popola MongoDB con dati di esempio (opzionale)**
 
 ```bash
 cd backend
+npm run seed:mongodb
+```
+
+Questo script crea automaticamente:
+- 6 recensioni di esempio per vari prodotti
+- 3 commenti sulle recensioni
+- Dati collegati agli ordini esistenti in MySQL
+
+**6. Configura le variabili d'ambiente**
+
+```bash
 cp .env.example .env
 ```
 
 Il file `.env` contiene già le configurazioni corrette per l'ambiente Docker.
 
-**6. Avvia il server**
+**7. Avvia il server**
 
 ```bash
 npm run dev
