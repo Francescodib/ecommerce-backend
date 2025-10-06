@@ -62,14 +62,14 @@ npm install --prefix backend
 
 ```bash
 docker compose up -d
+# Al primo avvio, MySQL esegue automaticamente schema.sql e seed.sql
 ```
 
-### 4. Inizializza database
+### 4. Popola MongoDB (opzionale)
 
 ```bash
-# MySQL
-docker exec -i shopsphere-mysql mysql -u shopsphere_user -pshopsphere_pass shopsphere < database/sql/schema.sql
-docker exec -i shopsphere-mysql mysql -u shopsphere_user -pshopsphere_pass shopsphere < database/sql/seed.sql
+cd backend
+npm run seed:mongodb
 ```
 
 ### 5. Avvia server

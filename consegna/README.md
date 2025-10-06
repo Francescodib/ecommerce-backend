@@ -86,17 +86,11 @@ docker compose up -d
 docker ps
 ```
 
-**4. Inizializza il database MySQL**
+Al primo avvio, Docker esegue **automaticamente**:
+- `database/sql/schema.sql` - Creazione tabelle MySQL
+- `database/sql/seed.sql` - Popolamento dati iniziali (30 users, 30 products, 15 orders)
 
-```bash
-# Crea lo schema
-docker exec -i shopsphere-mysql mysql -u shopsphere_user -pshopsphere_pass shopsphere < database/sql/schema.sql
-
-# Popola con i dati iniziali
-docker exec -i shopsphere-mysql mysql -u shopsphere_user -pshopsphere_pass shopsphere < database/sql/seed.sql
-```
-
-**5. Popola MongoDB con dati di esempio (opzionale)**
+**4. Popola MongoDB con dati di esempio (opzionale)**
 
 ```bash
 cd backend
@@ -108,7 +102,7 @@ Questo script crea automaticamente:
 - 3 commenti sulle recensioni
 - Dati collegati agli ordini esistenti in MySQL
 
-**6. Configura le variabili d'ambiente**
+**5. Configura le variabili d'ambiente**
 
 ```bash
 cp .env.example .env
@@ -116,7 +110,7 @@ cp .env.example .env
 
 Il file `.env` contiene già le configurazioni corrette per l'ambiente Docker.
 
-**7. Avvia il server**
+**6. Avvia il server**
 
 ```bash
 npm run dev

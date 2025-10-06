@@ -11,6 +11,14 @@ const ReviewComment = require('./src/models/mongodb/ReviewComment');
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/shopsphere';
 
 // Dati di esempio per le recensioni
+// NOTA: Dati allineati con seed.sql
+// Order 1 (user 3): iPhone 15 Pro (product 1)
+// Order 2 (user 4): Samsung Galaxy S24 (product 2)
+// Order 3 (user 5): MacBook Air + Cuffie Sony (products 3, 4)
+// Order 8 (user 10): Giacca Pelle + Cappotto (products 6, 10)
+// Order 12 (user 14): Sony Cuffie (product 4)
+// Order 15 (user 17): iPhone 15 Pro (product 1)
+
 const sampleReviews = [
   {
     productId: 1,
@@ -27,7 +35,7 @@ const sampleReviews = [
   },
   {
     productId: 1,
-    userId: 15,
+    userId: 17,
     orderId: 15,
     rating: 4,
     title: "Ottimo ma costoso",
@@ -36,12 +44,12 @@ const sampleReviews = [
     cons: ["Prezzo", "Non include caricatore"],
     verifiedPurchase: true,
     helpful: 8,
-    createdAt: new Date('2024-10-01')
+    createdAt: new Date('2024-10-05')
   },
   {
     productId: 4,
     userId: 5,
-    orderId: 2,
+    orderId: 3,
     rating: 5,
     title: "Migliori cuffie mai usate",
     comment: "La cancellazione del rumore è impressionante. Perfette per viaggi in aereo e treno. Audio cristallino, comfort eccezionale anche dopo ore di utilizzo.",
@@ -49,12 +57,12 @@ const sampleReviews = [
     cons: [],
     verifiedPurchase: true,
     helpful: 15,
-    createdAt: new Date('2024-10-02')
+    createdAt: new Date('2024-09-25')
   },
   {
     productId: 3,
-    userId: 8,
-    orderId: 8,
+    userId: 5,
+    orderId: 3,
     rating: 5,
     title: "Laptop perfetto per sviluppatori",
     comment: "MacBook Air M2 è una bestia. Compilo progetti enormi senza che si surriscaldi. Batteria infinita, silenzioso. Miglior acquisto dell'anno.",
@@ -66,8 +74,8 @@ const sampleReviews = [
   },
   {
     productId: 6,
-    userId: 12,
-    orderId: 12,
+    userId: 10,
+    orderId: 8,
     rating: 4,
     title: "Giacca di ottima qualità",
     comment: "Pelle morbida e resistente. Vestibilità perfetta, molto elegante. Unico difetto: il prezzo è abbastanza alto ma vale la spesa.",
@@ -75,20 +83,20 @@ const sampleReviews = [
     cons: ["Prezzo elevato"],
     verifiedPurchase: true,
     helpful: 6,
-    createdAt: new Date('2024-09-25')
+    createdAt: new Date('2024-10-02')
   },
   {
     productId: 2,
-    userId: 20,
-    orderId: null,
+    userId: 4,
+    orderId: 2,
     rating: 4,
     title: "Ottimo smartphone Android",
     comment: "Samsung Galaxy S24 è un ottimo telefono. Display AMOLED fantastico, fotocamera ottima. OneUI è migliorata molto.",
     pros: ["Display AMOLED", "Fotocamera", "Prezzo giusto"],
     cons: ["Batteria nella media"],
-    verifiedPurchase: false,
+    verifiedPurchase: true,
     helpful: 5,
-    createdAt: new Date('2024-10-03')
+    createdAt: new Date('2024-09-20')
   }
 ];
 

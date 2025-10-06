@@ -58,17 +58,14 @@ cd ..
 
 # 2. Avvia i database con Docker
 docker compose up -d
+# Al primo avvio, MySQL esegue automaticamente schema.sql e seed.sql
 
-# 3. Inizializza MySQL
-docker exec -i shopsphere-mysql mysql -u shopsphere_user -pshopsphere_pass shopsphere < database/sql/schema.sql
-docker exec -i shopsphere-mysql mysql -u shopsphere_user -pshopsphere_pass shopsphere < database/sql/seed.sql
-
-# 4. Popola MongoDB (opzionale ma consigliato)
+# 3. Popola MongoDB (opzionale ma consigliato)
 cd backend
 npm run seed:mongodb
 cd ..
 
-# 5. Avvia il server
+# 4. Avvia il server
 cd backend
 npm run dev
 ```
@@ -238,6 +235,8 @@ Tutto è pronto per il testing immediato.
 ---
 
 ## Seed MongoDB
+
+NOTA: MySQL viene popolato automaticamente al primo avvio di Docker Compose. MongoDB invece richiede l'esecuzione manuale del seed.
 
 ### Esecuzione
 
