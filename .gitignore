@@ -53,3 +53,9 @@ coverage/
 tmp/
 temp/
 *.tmp
+
+# ====================
+# devtotal folder and all its contents
+# ====================
+devtotal/
+devtotal/**
