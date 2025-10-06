@@ -43,7 +43,15 @@
             {
               "listen": "test",
               "script": {
-                "exec": ["pm.collectionVariables.set('adminToken', pm.response.json().data.token);"]
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const response = pm.response.json();",
+                  "  if (response.success && response.data && response.data.token) {",
+                  "    pm.collectionVariables.set('adminToken', response.data.token);",
+                  "    console.log('Admin token saved:', response.data.token);",
+                  "  }",
+                  "}"
+                ]
               }
             }
           ],
@@ -63,7 +71,15 @@
             {
               "listen": "test",
               "script": {
-                "exec": ["pm.collectionVariables.set('userToken', pm.response.json().data.token);"]
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const response = pm.response.json();",
+                  "  if (response.success && response.data && response.data.token) {",
+                  "    pm.collectionVariables.set('userToken', response.data.token);",
+                  "    console.log('User token saved:', response.data.token);",
+                  "  }",
+                  "}"
+                ]
               }
             }
           ],
@@ -245,6 +261,37 @@
               ]
             }
           }
+        },
+        {
+          "name": "Get Product Reviews",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/products/1/reviews?limit=10&sort=recent",
+              "host": ["{{baseUrl}}"],
+              "path": ["products", "1", "reviews"],
+              "query": [
+                {"key": "limit", "value": "10"},
+                {"key": "sort", "value": "recent"},
+                {"key": "minRating", "value": "4", "disabled": true}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Product Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{userToken}}"}
+            ],
+            "url": "{{baseUrl}}/products/4/reviews",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 5,\n  \"title\": \"Ottime cuffie!\",\n  \"comment\": \"Cancellazione del rumore eccezionale, comfort ottimo.\",\n  \"pros\": [\"Cancellazione rumore\", \"Comfort\"],\n  \"cons\": [\"Prezzo alto\"],\n  \"orderId\": 2\n}"
+            }
+          }
         }
       ]
     },
@@ -268,10 +315,18 @@
           }
         },
         {
-          "name": "Get User by ID",
+          "name": "Get User by ID (Self)",
           "request": {
             "method": "GET",
             "header": [{"key": "Authorization", "value": "Bearer {{userToken}}"}],
+            "url": "{{baseUrl}}/users/3"
+          }
+        },
+        {
+          "name": "Get User by ID (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{adminToken}}"}],
             "url": "{{baseUrl}}/users/3"
           }
         },
@@ -335,41 +390,10 @@
       "name": "Reviews",
       "item": [
         {
-          "name": "Get Product Reviews",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/products/1/reviews?limit=10&sort=recent",
-              "host": ["{{baseUrl}}"],
-              "path": ["products", "1", "reviews"],
-              "query": [
-                {"key": "limit", "value": "10"},
-                {"key": "sort", "value": "recent"},
-                {"key": "minRating", "value": "4", "disabled": true}
-              ]
-            }
-          }
-        },
-        {
           "name": "Get Review by ID",
           "request": {
             "method": "GET",
             "url": "{{baseUrl}}/reviews/68e1508b4cb15c1309142292"
-          }
-        },
-        {
-          "name": "Create Review",
-          "request": {
-            "method": "POST",
-            "header": [
-              {"key": "Content-Type", "value": "application/json"},
-              {"key": "Authorization", "value": "Bearer {{userToken}}"}
-            ],
-            "url": "{{baseUrl}}/products/4/reviews",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"rating\": 5,\n  \"title\": \"Ottime cuffie!\",\n  \"comment\": \"Cancellazione del rumore eccezionale, comfort ottimo.\",\n  \"pros\": [\"Cancellazione rumore\", \"Comfort\"],\n  \"cons\": [\"Prezzo alto\"],\n  \"orderId\": 2\n}"
-            }
           }
         },
         {
@@ -416,12 +440,7 @@
               ]
             }
           }
-        }
-      ]
-    },
-    {
-      "name": "Comments",
-      "item": [
+        },
         {
           "name": "Get Review Comments",
           "request": {
@@ -430,7 +449,7 @@
           }
         },
         {
-          "name": "Create Comment",
+          "name": "Create Comment on Review",
           "request": {
             "method": "POST",
             "header": [
